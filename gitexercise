@@ -1,0 +1,430 @@
+1,2,3
+
+sushant@sushant-P52F:~$ mkdir exercise
+sushant@sushant-P52F:~$ cd exercise/
+sushant@sushant-P52F:~/exercise$ git init
+Initialized empty Git repository in /home/sushant/exercise/.git/
+sushant@sushant-P52F:~/exercise$ git remote add origin git@github.com:Avinashkaur/exercise.git
+sushant@sushant-P52F:~/exercise$ touch first.html
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git commit -am "first commit"
+[master (root-commit) 083f431] first commit
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first.html
+sushant@sushant-P52F:~/exercise$ git push -u origin master
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 213 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:Avinashkaur/exercise.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+
+  
+4.
+ 
+sushant@sushant-P52F:~/exercise$ gedit first.html 
+sushant@sushant-P52F:~/exercise$ git diff
+diff --git a/first.html b/first.html
+index e69de29..2c47a77 100644
+--- a/first.html
++++ b/first.html
+@@ -0,0 +1,8 @@
++<html>
++<head></head>
++<body>
++
++Hello World!!
++
++</body>
++</html>
+
+sushant@sushant-P52F:~/exercise$ vi .gitignore
+third.html
+sushant@sushant-P52F:~/exercise$ gedit third.txt
+sushant@sushant-P52F:~/exercise$ git add third.txt
+The following paths are ignored by one of your .gitignore files:
+third.txt
+Use -f if you really want to add them.
+fatal: no files added
+
+
+5. 
+
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!
+</body>
+</html>
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!<br>
+Good Bye!!
+</body>
+</html>
+sushant@sushant-P52F:~/exercise$ git checkout first.html   //reverting changes before staging
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!
+</body>
+</html>
+
+
+6.
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!<br>
+Good Bye!!
+</body>
+</html>
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git status -s
+M  first.html
+?? .gitignore
+?? first.html~
+?? sec.html
+sushant@sushant-P52F:~/exercise$ git reset HEAD first.html
+Unstaged changes after reset:
+M	first.html
+
+
+7. 
+
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!<br>
+Hello Delhi!
+</body>
+</html>
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git commit -am "a1"
+[master 9dd36c8] a1
+ 1 files changed, 8 insertions(+), 0 deletions(-)
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!
+</body>
+</html>
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git commit --amend
+[master 4c9ebe7] a1
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+sushant@sushant-P52F:~/exercise$ cat first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!
+</body>
+</html>
+
+8.
+
+sushant@sushant-P52F:~/exercise$ git show
+commit 4c9ebe7c8c9b5c7203be111f34ae90276734ea42
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 07:51:59 2012 +0530
+
+    a1
+
+diff --git a/first.html b/first.html
+index e69de29..07dcaa2 100644
+--- a/first.html
++++ b/first.html
+@@ -0,0 +1,7 @@
++<html>
++<head>
++</head>
++<body>
++Hello World!
++</body>
++</html>
+
+sushant@sushant-P52F:~/exercise$ vi first.html
+<html>
+<head>
+</head>
+<body>
+Hello World!<br>
+Hello Delhi!
+</body>
+</html>
+
+sushant@sushant-P52F:~/exercise$ git show -s
+commit 4c9ebe7c8c9b5c7203be111f34ae90276734ea42
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 07:51:59 2012 +0530
+
+    a1
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git show -s
+commit 4c9ebe7c8c9b5c7203be111f34ae90276734ea42
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 07:51:59 2012 +0530
+
+    a1
+sushant@sushant-P52F:~/exercise$ git show
+commit 4c9ebe7c8c9b5c7203be111f34ae90276734ea42
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 07:51:59 2012 +0530
+    a1
+diff --git a/first.html b/first.html
+index e69de29..07dcaa2 100644
+--- a/first.html
++++ b/first.html
+@@ -0,0 +1,7 @@
++<html>
++<head>
++</head>
++<body>
++Hello World!
++</body>
++</html>
+sushant@sushant-P52F:~/exercise$ git status -s
+M  first.html
+?? .gitignore
+?? first.html~
+?? sec.html
+sushant@sushant-P52F:~/exercise$ git commit -am "a2"
+[master ec4b83c] a2
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+sushant@sushant-P52F:~/exercise$ git show -s
+commit ec4b83c91c837a6e12625198374c1785cbd13103
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 08:02:20 2012 +0530
+
+    a2
+
+
+9. 
+sushant@sushant-P52F:~/exercise$ git log -p -2
+commit f91b03b99e33310234f5e7b4dda32d81ddcdc334
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 10:21:46 2012 +0530
+
+    f4
+
+diff --git a/first.html b/first.html
+index 12552e6..5b64b92 100644
+--- a/first.html
++++ b/first.html
+@@ -3,7 +3,6 @@
+ </head>
+ <body>
+ Hello World!<br>
+-Hello Delhi!
+-
++Hello MAC!
+ </body>
+ </html>
+
+commit 6c23f9c41384710df090012269719c4b660ffe4e
+Merge: ff23c44 2385287
+Author: Avinash kaur <avinash.kaur@vinsol.com>
+Date:   Fri Nov 2 10:11:54 2012 +0530
+
+    re
+
+
+10. git log 
+
+11.
+
+sushant@sushant-P52F:~/exercise$ git branch feature1
+sushant@sushant-P52F:~/exercise$ git branch feature2
+sushant@sushant-P52F:~/exercise$ git branch
+  feature1
+  feature2
+* master
+sushant@sushant-P52F:~/exercise$ git branch -d feature2
+Deleted branch feature2 (was ec4b83c).
+sushant@sushant-P52F:~/exercise$ git branch
+  feature1
+* master
+
+12.
+
+sushant@sushant-P52F:~/exercise$ git checkout feature1
+Switched to branch 'feature1'
+sushant@sushant-P52F:~/exercise$ vi sec.html 
+sushant@sushant-P52F:~/exercise$ gedit sec.html
+aaaaaaaaaaaaaaaaaaaaaaaa
+
+bbbbbbbbbbbbbbbbbbbbbbbb
+
+ccccccccccccccccccccccccc 
+sushant@sushant-P52F:~/exercise$ git add sec.html
+sushant@sushant-P52F:~/exercise$ git commit -m "s1"
+[feature1 2385287] s1
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+ create mode 100644 sec.html
+ 
+ 
+ 13. 
+ 
+ sushant@sushant-P52F:~/exercise$ git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 2 commits.
+sushant@sushant-P52F:~/exercise$ gedit sec.html
+
+aaaaaaaaaaaaaaaaaaaaaaaa
+
+bbbbbbcccccccccccccccccc
+
+fbjbnjkfnbkfnhbfbf
+
+sushant@sushant-P52F:~/exercise$ git add sec.html
+sushant@sushant-P52F:~/exercise$ git commit -m "s2"
+[master ff23c44] s2
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+ create mode 100644 sec.html
+ 
+ 
+ 14. 
+ 
+ sushant@sushant-P52F:~/exercise$ git merge feature1
+Auto-merging sec.html
+CONFLICT (add/add): Merge conflict in sec.html
+Automatic merge failed; fix conflicts and then commit the result.
+sushant@sushant-P52F:~/exercise$ gedit sec.html
+
+aaaaaaaaaaaaaaaaaaaaaaaa
+
+<<<<<<< HEAD
+bbbbbbcccccccccccccccccc
+
+fbjbnjkfnbkfnhbfbf
+=======
+bbbbbbbbbbbbbbbbbbbbbbbb
+
+ccccccccccccccccccccccccc
+>>>>>>> feature1
+
+
+15.
+
+sushant@sushant-P52F:~/exercise$ git checkout -b feature2
+sushant@sushant-P52F:~/exercise$ gedit sec.html
+sushant@sushant-P52F:~/exercise$ gedit first.html
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git commit -m "f3"
+[feature2 f4794be] f3
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+
+16.
+
+sushant@sushant-P52F:~/exercise$ git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 5 commits.
+sushant@sushant-P52F:~/exercise$ gedit first.html
+sushant@sushant-P52F:~/exercise$ git add first.html
+sushant@sushant-P52F:~/exercise$ git commit -m "f4"
+[master f91b03b] f4
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+17. 
+
+sushant@sushant-P52F:~/exercise$ git rebase feature2
+First, rewinding head to replay your work on top of it...
+Applying: f4
+Using index info to reconstruct a base tree...
+Falling back to patching base and 3-way merge...
+Auto-merging first.html
+CONFLICT (content): Merge conflict in first.html
+Failed to merge in the changes.
+Patch failed at 0001 f4
+
+When you have resolved this problem run "git rebase --continue".
+If you would prefer to skip this patch, instead run "git rebase --skip".
+To restore the original branch and stop rebasing run "git rebase --abort".
+
+18.
+ Difference:
+ 
+ Merge:
+ 
+sushant@sushant-P52F:~/exercise$ git merge feature1
+Auto-merging sec.html
+CONFLICT (add/add): Merge conflict in sec.html
+Automatic merge failed; fix conflicts and then commit the result.
+sushant@sushant-P52F:~/exercise$ gedit sec.html
+
+Rebase:
+
+sushant@sushant-P52F:~/exercise$ git rebase feature2
+First, rewinding head to replay your work on top of it...
+Applying: f4
+Using index info to reconstruct a base tree...
+Falling back to patching base and 3-way merge...
+Auto-merging first.html
+CONFLICT (content): Merge conflict in first.html
+Failed to merge in the changes.
+Patch failed at 0001 f4
+
+When you have resolved this problem run "git rebase --continue".
+If you would prefer to skip this patch, instead run "git rebase --skip".
+To restore the original branch and stop rebasing run "git rebase --abort".
+
+19.
+
+sushant@sushant-P52F:~/exercise$ git stash
+No local changes to save
+
+
+20.
+
+
+sushant@sushant-P52F:~/exercise$ git remote add origin git@github.com:Avinashkaur/exercise.git
+sushant@sushant-P52F:~/exercise$ git push -u origin master
+Counting objects: 20, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (18/18), 1.52 KiB, done.
+Total 18 (delta 2), reused 0 (delta 0)
+To git@github.com:Avinashkaur/exercise.git
+   083f431..f91b03b  master -> master
+Branch master set up to track remote branch master from origin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
